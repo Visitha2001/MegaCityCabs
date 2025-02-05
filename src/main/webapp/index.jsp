@@ -1,104 +1,44 @@
 <%
-	if(session.getAttribute("username")==null || session.getAttribute("email")==null){
-		response.sendRedirect("login.jsp");
-	}
+    // Use the implicit 'session' object directly
+    if (session != null && session.getAttribute("username") != null) {
+        String username = (String) session.getAttribute("username");
+        out.println("<h3>Welcome, " + username + "!</h3>");
+    } else {
+        response.sendRedirect("login.jsp");
+    }
 %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Freelancer - Start Bootstrap Theme</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-	crossorigin="anonymous"></script>
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/index-styles.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+	<link rel="stylesheet" href="css/style.css">
 </head>
-<body id="page-top">
-<%
-    if(session.getAttribute("username")==null || session.getAttribute("email")==null){
-        response.sendRedirect("login.jsp");
-    }
-%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Freelancer - Start Bootstrap Theme</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-<!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-    crossorigin="anonymous"></script>
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-    rel="stylesheet" type="text/css" />
-<link
-    href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-    rel="stylesheet" type="text/css" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/index-styles.css" rel="stylesheet" />
-</head>
-<body id="page-top">
-    <!-- Navigation-->
-    <nav
-        class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
-        id="mainNav">
-        <div class="container">
-            <a class="navbar-brand" href="#page-top">Unique Developer</a>
-            <button
-                class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
-                type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                Menu <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a
-                        class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a
-                        class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a
-                        class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <!-- Display username -->
-                        <span class="nav-link py-3 px-0 px-lg-3 rounded" style="color: white;">
-                            Welcome, <%= session.getAttribute("username") %>
-                        </span>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1"><a
-                        class="nav-link py-3 px-0 px-lg-3 rounded" href="logout.jsp">Logout</a></li>
-                </ul>
+<body>
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.jsp">MyApp</a>
             </div>
-        </div>
-    </nav>
-	<!-- Bootstrap core JS-->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<!-- * *                               SB Forms JS                               * *-->
-	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+            <ul class="nav-links">
+                <li><a href="index.jsp">Home</a></li>
+                <li><a href="rides.jsp">Rides</a></li>
+                <li><a href="about.jsp">About</a></li>
+                <li><a href="contact.jsp">Contact</a></li>
+            </ul>
+			<div class="user-info">
+			    <span class="username"><%= session.getAttribute("username") != null ? session.getAttribute("username") : "Guest" %></span>
+			    <form action="logout" method="GET" style="display:inline;">
+			        <button type="submit" class="logout-btn">Logout</button>
+			    </form>
+			</div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Welcome to the Home Page!</h1>
+    </main>
 </body>
 </html>
