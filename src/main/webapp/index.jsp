@@ -30,9 +30,7 @@
             </ul>
 			<div class="user-info">
 			    <span class="username"><%= session.getAttribute("username") != null ? session.getAttribute("username") : "Guest" %></span>
-			    <form action="logout" method="GET" style="display:inline;">
-			        <button type="submit" class="logout-btn">Logout</button>
-			    </form>
+			    <a class="logout-btn" href="logout.jsp">Logout</a>
 			</div>
         </nav>
     </header>
