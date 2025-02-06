@@ -11,29 +11,26 @@ public class UserDao {
 
     // Method to register a new user in the database
     public boolean registerUser(User user) {
-        String query = "INSERT INTO users (username, email, password, mobile) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO users (username, email, password, mobile, NIC, address, role) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(4, user.getMobile());
-
+            preparedStatement.setString(5, user.getNic());
+            preparedStatement.setString(6, user.getAddress());
+            preparedStatement.setString(7, user.getRole());
             int rowCount = preparedStatement.executeUpdate();
-            return rowCount > 0; // Return true if insertion was successful
-
-        } catch (SQLException e) {
+            return rowCount > 0; // Return true if insertion successful
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false; // Return false if an SQL exception occurs
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false; // Return false if the JDBC driver is not found
+            return false; // Return false if exception occurs
         }
     }
-    
+
     // Method to authenticate a user
-    public boolean authenticateUser(String usernameOrEmail, String password) {
+    public User authenticateUser(String usernameOrEmail, String password) {
         String query = "SELECT * FROM users WHERE (username = ? OR email = ?) AND password = ?";
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -42,10 +39,20 @@ public class UserDao {
             preparedStatement.setString(3, password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next(); // Return true if a matching record exists
+            if (resultSet.next()) {
+                return new User(
+                    resultSet.getString("username"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password"),
+                    resultSet.getString("mobile"),
+                    resultSet.getString("NIC"),
+                    resultSet.getString("address"),
+                    resultSet.getString("role")
+                );
+            }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false; // Return false if an exception occurs
         }
+        return null;
     }
 }

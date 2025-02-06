@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.megacity.dao.UserDao;
+import com.megacity.models.User;
+import com.megacity.services.UserService;
+import com.megacity.services.impl.UserServiceImpl;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -29,16 +31,24 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        // Use UserDao to authenticate the user
-        UserDao userDao = new UserDao();
-        boolean isAuthenticated = userDao.authenticateUser(usernameOrEmail, password);
+        // Use UserService to authenticate the user
+        UserService userService = new UserServiceImpl();
+        User user = userService.authenticateUser(usernameOrEmail, password);
 
-        if (isAuthenticated) {
+        if (user != null) {
             // Set user in session
             HttpSession session = request.getSession();
-            session.setAttribute("username", usernameOrEmail);
-            // Redirect to index page
-            response.sendRedirect("index.jsp"); // Redirect to index.jsp or desired page
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("role", user.getRole());
+
+            // Redirect based on role
+            if ("admin".equals(user.getRole())) {
+                response.sendRedirect("admin-index.jsp");
+            } else if ("rider".equals(user.getRole())) {
+                response.sendRedirect("rider-index.jsp");
+            } else {
+                response.sendRedirect("index.jsp");
+            }
         } else {
             out.println("<h3 style='color:red'>Invalid username/email or password!</h3>");
         }
