@@ -138,6 +138,53 @@ body {
     box-shadow: 0px 0px 8px rgba(187, 134, 252, 0.5);
 }
 
+/* Styling for the select dropdown */
+.form-group select {
+    width: 100%;
+    padding: 12px 10px 12px 50px; /* Matches input field padding */
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: #333; /* Dark input background */
+    color: #e0e0e0; /* Light text */
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    appearance: none; /* Removes default arrow */
+    -webkit-appearance: none; /* Removes default arrow for Safari */
+    -moz-appearance: none; /* Removes default arrow for Firefox */
+    cursor: pointer;
+}
+
+/* Add custom dropdown arrow using a pseudo-element */
+.form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e0e0e0'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center; /* Position the arrow */
+    background-size: 12px; /* Size of the arrow */
+}
+
+/* Focus state for select dropdown */
+.form-group select:focus {
+    border-color: #bb86fc; /* Accent color for focus */
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(187, 134, 252, 0.5);
+}
+
+/* Label styling for the select dropdown */
+.form-group label[for="role"] {
+    position: absolute;
+    left: 15px; /* Adjusted to move icon closer to the left */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 18px; /* Larger icon size */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the select dropdown */
+.form-group select:hover {
+    border-color: #bb86fc; /* Accent color for hover */
+}
+
 .agree-term {
     margin-right: 10px;
     accent-color: #bb86fc; /* Checkbox color */

@@ -45,9 +45,24 @@
 									placeholder="Repeat your password" />
 							</div>
 							<div class="form-group">
-								<label for="contact"><i class="zmdi zmdi-lock-outline"></i></label>
+								<label for="contact"><i class="zmdi zmdi-phone"></i></label>
 								<input type="text" name="contact" id="contact"
 									placeholder="Contact no" />
+							</div>
+							<div class="form-group">
+							    <label for="nic"><i class="zmdi zmdi-card"></i></label>
+							    <input type="text" name="nic" id="nic" placeholder="Your NIC" />
+							</div>
+							<div class="form-group">
+							    <label for="address"><i class="zmdi zmdi-pin"></i></label>
+							    <input type="text" name="address" id="address" placeholder="Your Address" />
+							</div>
+							<div class="form-group">
+							    <label for="role"><i class="zmdi zmdi-account-box"></i></label>
+							    <select name="role" id="role">
+							        <option value="customer">Customer</option>
+							        <option value="rider">Rider</option>
+							    </select>
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signup" id="signup"

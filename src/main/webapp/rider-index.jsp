@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Rider-Dashboard</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
                 <a href="index.jsp">MyApp</a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.jsp">Home</a></li>
+                <li><a href="rider-index.jsp">Home</a></li>
                 <li><a href="">Rides</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact</a></li>
