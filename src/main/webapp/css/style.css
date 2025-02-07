@@ -165,9 +165,9 @@ body {
 
 /* Focus state for select dropdown */
 .form-group select:focus {
-    border-color: #bb86fc; /* Accent color for focus */
+    border-color:  rgb(249, 192, 0); /* Accent color for focus */
     outline: none;
-    box-shadow: 0px 0px 8px rgba(187, 134, 252, 0.5);
+    box-shadow: 0px 0px 8px  rgb(249, 192, 0);
 }
 
 /* Label styling for the select dropdown */
@@ -183,7 +183,7 @@ body {
 
 /* Hover effect for the select dropdown */
 .form-group select:hover {
-    border-color: #bb86fc; /* Accent color for hover */
+    border-color:  rgb(249, 192, 0); /* Accent color for hover */
 }
 
 .agree-term {
