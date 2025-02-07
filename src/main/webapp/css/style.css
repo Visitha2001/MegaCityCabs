@@ -8,7 +8,7 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    color: rgb(249, 192, 0); /* Light text */
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -39,13 +39,13 @@ body {
 
 @keyframes shadow-pulse {
     0% {
-        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(173, 216, 230, 0.4), 0 0 40px rgba(147, 112, 219, 0.3); /* Light blue and purple */
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(173, 216, 230, 0.4), 0 0 40px rgb(249, 192, 0); /* Light blue and purple */
     }
     50% {
-        box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(173, 216, 230, 0.6), 0 0 60px rgba(147, 112, 219, 0.5); /* Light blue and purple */
+        box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(173, 216, 230, 0.6), 0 0 60px rgb(249, 192, 0); /* Light blue and purple */
     }
     100% {
-        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(173, 216, 230, 0.4), 0 0 40px rgba(147, 112, 219, 0.3); /* Light blue and purple */
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(173, 216, 230, 0.4), 0 0 40px rgb(249, 192, 0); /* Light blue and purple */
     }
 }
 
@@ -74,14 +74,14 @@ body {
     position: absolute;
     bottom: 60px;
     text-decoration: none;
-    color: #bb86fc; /* Accent color for links */
+    color: rgb(249, 192, 0); /* Accent color for links */
     font-size: 14px;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .signup-image-link:hover, .signin-image-link:hover {
-    color: #9c27b0; /* Darker accent color on hover */
+    color: rgb(249, 192, 0); /* Darker accent color on hover */
     text-decoration: underline;
 }
 
@@ -91,6 +91,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #333;
 }
 
 .form-title {
@@ -98,7 +99,7 @@ body {
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-    color: #bb86fc; /* Accent color for titles */
+    color: rgb(249, 192, 0); /* Accent color for titles */
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -124,7 +125,7 @@ body {
 .form-group input[type="password"] {
     width: 100%;
     padding: 12px 10px 12px 50px; /* Increased padding-left to create space */
-    border: 1px solid #444;
+    border: 1px solid #555;
     border-radius: 8px;
     background: #333; /* Dark input background */
     color: #e0e0e0; /* Light text */
@@ -133,7 +134,7 @@ body {
 }
 
 .form-group input:focus {
-    border-color: #bb86fc; /* Accent color for focus */
+    border-color: rgb(249, 192, 0); /* Accent color for focus */
     outline: none;
     box-shadow: 0px 0px 8px rgba(187, 134, 252, 0.5);
 }
@@ -142,7 +143,7 @@ body {
 .form-group select {
     width: 100%;
     padding: 12px 10px 12px 50px; /* Matches input field padding */
-    border: 1px solid #444;
+    border: 1px solid #555;
     border-radius: 8px;
     background: #333; /* Dark input background */
     color: #e0e0e0; /* Light text */
@@ -201,13 +202,13 @@ body {
 }
 
 .label-agree-term a {
-    color: #bb86fc; /* Accent color for links */
+    color: rgb(249, 192, 0); /* Accent color for links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .label-agree-term a:hover {
-    color: #9c27b0; /* Darker accent color on hover */
+    color: rgb(249, 192, 0); /* Darker accent color on hover */
     text-decoration: underline;
 }
 
@@ -216,7 +217,7 @@ body {
 }
 
 .form-submit {
-    background: #bb86fc; /* Accent color for buttons */
+    background: rgb(249, 192, 0); /* Accent color for buttons */
     color: #121212; /* Dark text for contrast */
     border: none;
     padding: 12px 24px;
@@ -230,9 +231,8 @@ body {
 }
 
 .form-submit:hover {
-    background: #9c27b0; /* Darker accent color on hover */
+    background: rgb(179, 137, 0); /* Darker accent color on hover */
     transform: translateY(-2px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .social-login {
@@ -242,7 +242,7 @@ body {
 
 .social-label {
     font-size: 14px;
-    color: #aaa;
+    color: #000000;
     margin-bottom: 10px;
     display: block;
 }
@@ -256,6 +256,7 @@ body {
 }
 
 .socials li a {
+	text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -267,88 +268,11 @@ body {
     font-size: 18px;
     transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid #444;
 }
 
 .socials li a:hover {
-    background: #bb86fc; /* Accent color for hover */
+    background: rgb(249, 192, 0); /* Accent color for hover */
     color: #121212; /* Dark text for contrast */
-    transform: scale(1.1);
-}
-
-/* Header Styling */
-.site-header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo a {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
-    text-decoration: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links li a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
-    color: #ffeb3b;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.username {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.logout-btn {
-    background-color: #ff5722;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.logout-btn:hover {
-    background-color: #e64a19;
-}
-
-/* Main Content Styling */
-main {
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    transform: scale(1.2);
 }

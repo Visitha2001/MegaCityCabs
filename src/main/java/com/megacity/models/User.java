@@ -7,7 +7,7 @@ public class User {
     private String mobile;
     private String nic;
     private String address;
-    private String role; // New field for role
+    private String role;
 
     // Constructor
     public User(String username, String email, String password, String mobile, String nic, String address, String role) {

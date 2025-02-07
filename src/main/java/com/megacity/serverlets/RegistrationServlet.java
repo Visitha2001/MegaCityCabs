@@ -58,11 +58,11 @@ public class RegistrationServlet extends HttpServlet {
             
             // Redirect based on role
             if ("admin".equals(user.getRole())) {
-                response.sendRedirect("admin-index.jsp");
+                response.sendRedirect("role/admin/admin-index.jsp");
             } else if ("rider".equals(user.getRole())) {
-                response.sendRedirect("rider-index.jsp");
+                response.sendRedirect("role/rider/rider-index.jsp");
             } else {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("role/client/index.jsp");
             }
         } else {
             out.println("<h3 style='color:red'>Registration failed. Please try again.</h3>");

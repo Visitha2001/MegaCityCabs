@@ -1,0 +1,143 @@
+.container {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-form {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #333;
+}
+
+.form-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: rgb(249, 192, 0); /* Accent color for titles */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background: #333; /* Dark input background */
+    color: #e0e0e0; /* Light text */
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: rgb(249, 192, 0); /* Accent color for focus */
+    outline: none;
+    box-shadow: 0px 0px 8px rgb(249, 192, 0);
+}
+
+.vehicle-cards {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 165px;
+    height: 80px;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    padding: 10px 0;
+}
+
+.card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.card i {
+    font-size: 24px;
+    color: #fff;
+    flex-grow: 1; /* Pushes the span to the bottom */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.card span {
+    font-size: 16px;
+    color: #fff;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.card:hover {
+    border-color: rgb(249, 192, 0); /* Accent color on hover */
+    background-color: rgb(179, 137, 0);
+}
+
+/* When a card is selected */
+.card input[type="radio"]:checked + span {
+    font-weight: bold;
+	color: rgb(249, 192, 0);
+}
+
+.card input[type="radio"]:checked + i {
+    color: rgb(249, 192, 0);
+}
+
+.form-button {
+    text-align: center;
+}
+
+.form-submit {
+    background: rgb(249, 192, 0);
+    color: #121212;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+}
+
+.form-submit:hover {
+    background: rgb(179, 137, 0); /* Darker accent color on hover */
+    transform: translateY(-2px);
+}
