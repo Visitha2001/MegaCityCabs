@@ -14,9 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 	<div class="main">
-
 		<!-- Sign up form -->
 		<section class="signup">
 			<div class="container">
@@ -80,15 +78,10 @@
 				</div>
 			</div>
 		</section>
-
-
 	</div>
 	<!-- JS -->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="js/main.js"></script>
-
-
-
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
