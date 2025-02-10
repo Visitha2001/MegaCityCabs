@@ -17,6 +17,7 @@ public class RegistrationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         // Retrieve form data
         String username = request.getParameter("name");
         String email = request.getParameter("email");
@@ -26,25 +27,36 @@ public class RegistrationServlet extends HttpServlet {
         String nic = request.getParameter("nic");
         String address = request.getParameter("address");
         String role = request.getParameter("role");
+        String vehicleType = request.getParameter("vehicleType"); // Corrected spelling
+        String plateNumber = request.getParameter("plateNumber");
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
         // Input validation
         if (username == null || username.isEmpty() || email == null || email.isEmpty() ||
-            password == null || password.isEmpty() || repassword == null || repassword.isEmpty() ||
-            mobile == null || mobile.isEmpty() || nic == null || nic.isEmpty() || address == null || address.isEmpty()) {
-            out.println("<h3 style='color:red'>All fields are required!</h3>");
+                password == null || password.isEmpty() || repassword == null || repassword.isEmpty() ||
+                mobile == null || mobile.isEmpty() || nic == null || nic.isEmpty() || address == null || address.isEmpty() ||
+                role == null || role.isEmpty()) {
+            out.println("All fields are required!");
             return;
         }
 
         if (!password.equals(repassword)) {
-            out.println("<h3 style='color:red'>Passwords do not match!</h3>");
+            out.println("Passwords do not match!");
             return;
         }
 
+        // Optional validation for rider-specific fields
+        if ("rider".equals(role)) {
+            if (vehicleType == null || vehicleType.isEmpty() || plateNumber == null || plateNumber.isEmpty()) {
+                out.println("Vehicle type and plate number are required for riders!");
+                return;
+            }
+        }
+
         // Create User object
-        User user = new User(username, email, password, mobile, nic, address, role);
+        User user = new User(username, email, password, mobile, nic, address, role, vehicleType, plateNumber);
 
         // Use UserService to register the user
         UserService userService = new UserServiceImpl();
@@ -55,7 +67,7 @@ public class RegistrationServlet extends HttpServlet {
             request.getSession().setAttribute("username", username);
             request.getSession().setAttribute("email", email);
             request.getSession().setAttribute("role", role);
-            
+
             // Redirect based on role
             if ("admin".equals(user.getRole())) {
                 response.sendRedirect("role/admin/admin-index.jsp");
@@ -65,7 +77,7 @@ public class RegistrationServlet extends HttpServlet {
                 response.sendRedirect("role/client/index.jsp");
             }
         } else {
-            out.println("<h3 style='color:red'>Registration failed. Please try again.</h3>");
+            out.println("Registration failed. Please try again.");
         }
     }
 }

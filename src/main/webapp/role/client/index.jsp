@@ -9,7 +9,7 @@
 <body>
     <%
         // Use the implicit 'session' object directly
-        if (session != null && session.getAttribute("username") != null) {
+        if (session != null && session.getAttribute("username") != null || !"customer".equals(session.getAttribute("role"))) {
             String username = (String) session.getAttribute("username");
         } else {
             response.sendRedirect("../../login.jsp");

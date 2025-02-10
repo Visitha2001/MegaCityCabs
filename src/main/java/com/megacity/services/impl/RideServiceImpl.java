@@ -18,40 +18,4 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to book ride", e);
         }
     }
-
-    @Override
-    public void assignRider(int rideId, String riderUsername, String vehicleType, String vehiclePlateNumber) {
-        try {
-            rideDao.assignRider(rideId, riderUsername, vehicleType, vehiclePlateNumber);
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to assign rider", e);
-        }
-    }
-
-    @Override
-    public void acceptRide(int rideId) {
-        try {
-            rideDao.acceptRide(rideId);
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to accept ride", e);
-        }
-    }
-
-    @Override
-    public List<Ride> getRidesForRider(String riderUsername) {
-        try {
-            return rideDao.getRidesForRider(riderUsername);
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to fetch rides for rider", e);
-        }
-    }
-
-    @Override
-    public List<Ride> getRidesForCustomer(String customerUsername) {
-        try {
-            return rideDao.getRidesForCustomer(customerUsername);
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to fetch rides for customer", e);
-        }
-    }
 }

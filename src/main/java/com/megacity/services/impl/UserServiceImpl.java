@@ -4,6 +4,10 @@ import com.megacity.dao.UserDao;
 import com.megacity.models.User;
 import com.megacity.services.UserService;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
