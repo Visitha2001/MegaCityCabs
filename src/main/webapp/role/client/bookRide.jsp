@@ -8,7 +8,7 @@
     <script>
         // Function to calculate the price based on vehicle type and length of ride
         function calculatePrice() {
-            var vehicleType = document.querySelector('input[name="vehicle_type"]:checked');
+            var vehicleType = document.querySelector('input[name="vehicleType"]:checked');
             var lengthOfRide = parseFloat(document.getElementById('length_of_ride').value);
             var priceField = document.getElementById('price');
 
@@ -32,7 +32,7 @@
             calculatePrice();
 
             // Add event listener to vehicle type selection
-            var vehicleRadios = document.querySelectorAll('input[name="vehicle_type"]');
+            var vehicleRadios = document.querySelectorAll('input[name="vehicleType"]');
             vehicleRadios.forEach(function(radio) {
                 radio.addEventListener('change', calculatePrice);
             });
@@ -96,22 +96,22 @@
                     <div class="form-group">
 					    <div class="vehicle-cards">
 					        <label class="card">
-					            <input type="radio" name="vehicle_type" value="car" required>
+					            <input type="radio" name="vehicleType" value="car" required>
 					            <i class="fas fa-car"></i> <!-- FontAwesome Car Icon -->
 					            <span>Car</span>
 					        </label>
 					        <label class="card">
-					            <input type="radio" name="vehicle_type" value="bike">
+					            <input type="radio" name="vehicleType" value="bike">
 					            <i class="fas fa-motorcycle"></i> <!-- FontAwesome Bike Icon -->
 					            <span>Bike</span>
 					        </label>
 					        <label class="card">
-					            <input type="radio" name="vehicle_type" value="suv">
+					            <input type="radio" name="vehicleType" value="suv">
 					            <i class="fas fa-car-side"></i> <!-- FontAwesome SUV Icon -->
 					            <span>SUV</span>
 					        </label>
 					        <label class="card">
-					            <input type="radio" name="vehicle_type" value="van">
+					            <input type="radio" name="vehicleType" value="van">
 					            <i class="fas fa-shuttle-van"></i> <!-- FontAwesome Van Icon -->
 					            <span>Van</span>
 					        </label>
