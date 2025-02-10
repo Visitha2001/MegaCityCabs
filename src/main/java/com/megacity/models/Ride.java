@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 import java.time.Duration;
 
 public class Ride {
-    // Fields
+    private int id; // Add this field for the ride ID
     private String start_location;
     private String end_location;
     private String customer_username;
     private String rider_username;
     private double price;
     private double lengthOfRide;
-    private String rideStatus;   // Status of the ride (e.g., "REQUESTED", "IN_PROGRESS", "COMPLETED", "CANCELLED")
-    private String vehicleType;  // Type of vehicle used for the ride (e.g., "SEDAN", "SUV", "BIKE")
+    private String rideStatus;
+    private String vehicleType;
     private String vehiclePlateNumber;
     private LocalDateTime rideStartedAt;
     private LocalDateTime rideEndedAt;
@@ -20,10 +20,11 @@ public class Ride {
     // Default Constructor
     public Ride() {}
 
-    // Constructor
-    public Ride(String start_location, String end_location, String customer_username, String rider_username,
+    // Constructor with all fields including ID
+    public Ride(int id, String start_location, String end_location, String customer_username, String rider_username,
                 double price, double lengthOfRide, String rideStatus, String vehicleType, String vehiclePlateNumber,
                 LocalDateTime rideStartedAt, LocalDateTime rideEndedAt) {
+        this.id = id;
         this.start_location = start_location;
         this.end_location = end_location;
         this.customer_username = customer_username;
@@ -35,6 +36,15 @@ public class Ride {
         this.vehiclePlateNumber = vehiclePlateNumber;
         this.rideStartedAt = rideStartedAt;
         this.rideEndedAt = rideEndedAt;
+    }
+
+    // Getter and Setter for ID
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     // Getters and Setters

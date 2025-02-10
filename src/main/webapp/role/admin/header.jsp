@@ -6,9 +6,9 @@
             <a href="index.jsp">MegaCity</a>
         </div>
         <ul class="nav-links">
-            <li><a href="index.jsp">Home</a></li>
-            <li><a href="bookRide.jsp">Rides</a></li>
-            <li><a href="viewRides.jsp">View Rides</a></li>
+            <li><a href="admin-index.jsp">Home</a></li>
+            <li><a href="assignRider.jsp">Assign Riders</a></li>
+            <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
         </ul>
         <div class="user-info">
