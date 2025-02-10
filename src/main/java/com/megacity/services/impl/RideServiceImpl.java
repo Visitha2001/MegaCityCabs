@@ -18,4 +18,13 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to book ride", e);
         }
     }
+    
+    @Override
+    public List<Ride> getRequestedRides() {
+        try {
+            return rideDao.getRequestedRides();
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch requested rides", e);
+        }
+    }
 }

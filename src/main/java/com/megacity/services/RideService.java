@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface RideService {
     void bookRide(Ride ride);
+    List<Ride> getRequestedRides();
 }
