@@ -12,10 +12,15 @@
             <li><a href="">Contact</a></li>
         </ul>
         <div class="user-info">
+            <div class="user-info">
             <span class="username">
                 <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Guest" %>
             </span>
-            <a class="logout-btn" href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
+            <% if (session.getAttribute("username") != null) { %>
+                <a class="logout-btn" href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
+            <% } else { %>
+                <a class="login-btn" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+            <% } %>
         </div>
     </nav>
 </header>

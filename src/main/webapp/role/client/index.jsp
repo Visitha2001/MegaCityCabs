@@ -8,12 +8,12 @@
 </head>
 <body>
     <%
-        // Use the implicit 'session' object directly
-        if (session != null && session.getAttribute("username") != null || !"customer".equals(session.getAttribute("role"))) {
-            String username = (String) session.getAttribute("username");
-        } else {
+        if (session == null || session.getAttribute("username") == null || !"customer".equals(session.getAttribute("role"))) {
             response.sendRedirect("../../login.jsp");
+            return;
         }
+
+        String username = (String) session.getAttribute("username");
     %>
 
     <!-- Include the header -->

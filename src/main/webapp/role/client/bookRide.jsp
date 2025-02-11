@@ -43,19 +43,21 @@
     </script>
 </head>
 <body>
-	<%
-        // Use the implicit 'session' object directly
-        if (session != null && session.getAttribute("username") != null) {
-            String username = (String) session.getAttribute("username");
-        } else {
+    <%
+        if (session == null || session.getAttribute("username") == null || !"customer".equals(session.getAttribute("role"))) {
             response.sendRedirect("../../login.jsp");
+            return;
         }
+
+        String username = (String) session.getAttribute("username");
     %>
+
+    <!-- Include the header -->
     <jsp:include page="header.jsp" />
     
     <div class="main">
         <div class="container">
-            <form action="${pageContext.request.contextPath}/RideServlet" method="post" class="signup-form">
+            <form action="${pageContext.request.contextPath}/ride" method="post" class="signup-form">
                 <input type="hidden" name="action" value="book">
                 
                 <h2 class="form-title">Book a Ride</h2>

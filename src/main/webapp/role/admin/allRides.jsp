@@ -6,42 +6,16 @@
 <html>
 <head>
     <title>Assign Ride</title>
-	<style>
-	    .container_big {
-	    	margin: 50px;
-	    }
-	    table {
-	        width: 100%;
-	        border-collapse: collapse;
-	        margin-top: 20px;
-	        background-color: #1f1f1f; /* Dark table background */
-	        color: #ffffff; /* Light text color for table */
-	    }
-	    table, th, td {
-	        border: 1px solid #333; /* Darker border color */
-	    }
-	    th, td {
-	        padding: 10px;
-	        text-align: left;
-	    }
-	    th {
-	        background-color: #333; /* Darker header background */
-	        color: #f0f0f0; /* Light text color for headers */
-	    }
-	    tr:hover {
-	        background-color: #2a2a2a; /* Slightly lighter hover effect */
-	    }
-	</style>
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/role/admin/css/allrides.css">
 </head>
 <body>
     <%
-        // Use the implicit 'session' object directly
-        if (session != null && session.getAttribute("username") != null || !"admin".equals(session.getAttribute("role"))) {
-            String username = (String) session.getAttribute("username");
-        } else {
+        if (session == null || session.getAttribute("username") == null || !"admin".equals(session.getAttribute("role"))) {
             response.sendRedirect("../../login.jsp");
+            return;
         }
+
+        String username = (String) session.getAttribute("username");
     %>
 
     <!-- Include the header -->
@@ -73,7 +47,7 @@
 	            <td><%= ride.getPrice() %></td>
 	            <td><%= ride.getLengthOfRide() %></td>
 	            <td><%= ride.getRideStatus() %></td>
-	            <td><button>Assign Rider</button></td>
+	            <td><button class="btn-bsic">Assign Rider</button></td>
 	        </tr>
 	        <%
 	                }
