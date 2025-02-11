@@ -15,7 +15,7 @@
             <span class="username">
                 <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Guest" %>
             </span>
-            <a class="logout-btn" href="../../logout.jsp">Logout</a>
+            <a class="logout-btn" href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
         </div>
     </nav>
 </header>
