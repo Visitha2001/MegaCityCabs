@@ -7,4 +7,5 @@ import java.util.List;
 public interface RideService {
     void bookRide(Ride ride);
     List<Ride> getRequestedRides();
+    void assignRider(int rideId, String riderUsername);
 }

@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
     public User authenticateUser(String usernameOrEmail, String password) {
         return userDao.authenticateUser(usernameOrEmail, password);
     }
+    
+    @Override
+    public List<User> getRidersByVehicleType(String vehicleType) {
+        return userDao.getRidersByVehicleType(vehicleType);
+    }
 }
