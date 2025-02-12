@@ -7,4 +7,5 @@ import java.util.List;
 public interface UserService {
     boolean registerUser(User user);
     User authenticateUser(String usernameOrEmail, String password);
+    List<User> getRidersByVehicleType(String vehicleType);
 }
