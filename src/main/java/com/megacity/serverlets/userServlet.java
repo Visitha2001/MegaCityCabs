@@ -26,7 +26,8 @@ public class userServlet extends HttpServlet {
             for (User rider : riders) {
                 json.append("{")
                     .append("\"username\":\"").append(rider.getUsername()).append("\",")
-                    .append("\"vehicleType\":\"").append(rider.getVehicleType()).append("\"")
+                    .append("\"vehicleType\":\"").append(rider.getVehicleType()).append("\",")
+                    .append("\"plateNumber\":\"").append(rider.getPlateNumber()).append("\"")
                     .append("},");
             }
             if (riders.size() > 0) {

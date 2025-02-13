@@ -61,12 +61,13 @@ public class RideDao {
     }
     
     // Method to assign a rider to a ride
-    public void assignRider(int rideId, String riderUsername) throws SQLException {
-        String query = "UPDATE rides SET rider_username = ?, ride_status = 'ASSIGNED' WHERE id = ?";
+    public void assignRider(int rideId, String riderUsername, String plateNumber) throws SQLException {
+        String query = "UPDATE rides SET rider_username = ?, vehicle_plate_number = ?, ride_status = 'ASSIGNED' WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, riderUsername);
-            stmt.setInt(2, rideId);
+            stmt.setString(2, plateNumber);
+            stmt.setInt(3, rideId);
             stmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("MySQL JDBC Driver not found", e);
