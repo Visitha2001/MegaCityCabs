@@ -29,9 +29,9 @@ public class RideServiceImpl implements RideService {
     }
     
     @Override
-    public void assignRider(int rideId, String riderUsername) {
+    public void assignRider(int rideId, String riderUsername, String plateNumber) {
         try {
-            rideDao.assignRider(rideId, riderUsername);
+            rideDao.assignRider(rideId, riderUsername, plateNumber);
         } catch (SQLException e) {
             throw new RuntimeException("Failed to assign rider", e);
         }
