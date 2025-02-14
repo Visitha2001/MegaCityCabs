@@ -36,4 +36,13 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to assign rider", e);
         }
     }
+    
+    @Override
+    public List<Ride> getAssignedRides() {
+        try {
+            return rideDao.getAssignedRides();
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch assigned rides", e);
+        }
+    }
 }

@@ -8,7 +8,7 @@
         <ul class="nav-links">
             <li><a href="${pageContext.request.contextPath}/role/admin/admin-index.jsp">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/ride">Assign Ride</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="${pageContext.request.contextPath}/assigned">Assigned Rides</a></li>
             <li><a href="">Contact</a></li>
         </ul>
         <div class="user-info">
