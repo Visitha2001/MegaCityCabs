@@ -8,4 +8,5 @@ public interface RideService {
     void bookRide(Ride ride);
     List<Ride> getRequestedRides();
     void assignRider(int rideId, String riderUsername, String plateNumber);
+    List<Ride> getAssignedRides();
 }

@@ -73,4 +73,36 @@ public class RideDao {
             throw new RuntimeException("MySQL JDBC Driver not found", e);
         }
     }
+    
+    // Method to get all rides with status "ASSIGNED"
+    public List<Ride> getAssignedRides() throws SQLException {
+        String query = "SELECT * FROM rides WHERE ride_status = ?";
+        List<Ride> assignedRides = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, "ASSIGNED");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Ride ride = new Ride(
+                        rs.getInt("id"),
+                        rs.getString("start_location"),
+                        rs.getString("end_location"),
+                        rs.getString("customer_username"),
+                        rs.getString("rider_username") != null ? rs.getString("rider_username") : "",
+                        rs.getDouble("price"),
+                        rs.getDouble("length_of_ride"),
+                        rs.getString("ride_status"),
+                        rs.getString("vehicle_type"),
+                        rs.getString("vehicle_plate_number") != null ? rs.getString("vehicle_plate_number") : "",
+                        rs.getTimestamp("ride_started_at") != null ? rs.getTimestamp("ride_started_at").toLocalDateTime() : null,
+                        rs.getTimestamp("ride_ended_at") != null ? rs.getTimestamp("ride_ended_at").toLocalDateTime() : null
+                );
+                assignedRides.add(ride);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return assignedRides;
+    }
 }
