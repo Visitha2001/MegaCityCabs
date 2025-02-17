@@ -45,4 +45,13 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to fetch assigned rides", e);
         }
     }
+    
+    @Override
+    public List<Ride> getRidesForUser(String username) {
+        try {
+            return rideDao.getRidesForUser(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch rides for user", e);
+        }
+    }
 }
