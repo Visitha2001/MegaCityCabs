@@ -105,4 +105,37 @@ public class RideDao {
         }
         return assignedRides;
     }
+    
+    // Method to get all rides for a specific user
+    public List<Ride> getRidesForUser(String username) throws SQLException {
+        List<Ride> rides = new ArrayList<>();
+        String query = "SELECT * FROM rides WHERE customer_username = ?"; // Adjust the table name and column names as needed
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username); // Set the username parameter
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Ride ride = new Ride();
+                ride.setId(resultSet.getInt("id"));
+                ride.setStart_location(resultSet.getString("start_location"));
+                ride.setEnd_location(resultSet.getString("end_location"));
+                ride.setCustomer_username(resultSet.getString("customer_username"));
+                ride.setPrice(resultSet.getDouble("price"));
+                ride.setLengthOfRide(resultSet.getDouble("length_of_ride"));
+                ride.setVehicleType(resultSet.getString("vehicle_type"));
+                ride.setRideStatus(resultSet.getString("ride_status"));
+                ride.setRider_username(resultSet.getString("rider_username"));
+                ride.setVehiclePlateNumber(resultSet.getString("vehicle_plate_number"));
+
+                rides.add(ride);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+        }
+
+        return rides;
+    }
 }
