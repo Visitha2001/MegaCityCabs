@@ -3,7 +3,7 @@
 <header class="site-header">
     <nav class="navbar">
         <div class="logo">
-            <a href="index.jsp">MegaCity</a>
+            <a href="${pageContext.request.contextPath}/role/client/index.jsp">MegaCity</a>
         </div>
         <ul class="nav-links">
             <li><a href="${pageContext.request.contextPath}/role/client/index.jsp">Home</a></li>
