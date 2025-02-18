@@ -63,4 +63,22 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to fetch rides for riders", e);
         }
     }
+    
+    @Override
+    public List<Ride> getAcceptedRidesForRiders(String username) {
+        try {
+            return rideDao.getAcceptedRidesForRiders(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch rides for riders", e);
+        }
+    }
+    
+    @Override
+    public void updateRideStatus(int rideId, String status) {
+        try {
+            rideDao.updateRideStatus(rideId, status);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to update ride status", e);
+        }
+    }
 }

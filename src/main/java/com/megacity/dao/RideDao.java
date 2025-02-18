@@ -139,10 +139,10 @@ public class RideDao {
         return rides;
     }
     
-    // Method to get all rides for a specific user
+    // Method to get all assigned rides for a specific rider
     public List<Ride> getRidesForRiders(String username) throws SQLException {
         List<Ride> rides = new ArrayList<>();
-        String query = "SELECT * FROM rides WHERE rider_username = ?";
+        String query = "SELECT * FROM rides WHERE rider_username = ? AND ride_status = 'ASSIGNED'";
 
         try (Connection connection = DBConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -170,5 +170,52 @@ public class RideDao {
         }
 
         return rides;
+    }
+    
+    // Method to get all assigned rides for a specific rider
+    public List<Ride> getAcceptedRidesForRiders(String username) throws SQLException {
+        List<Ride> rides = new ArrayList<>();
+        String query = "SELECT * FROM rides WHERE rider_username = ? AND ride_status = 'ACCEPTED'";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username); // Set the username parameter
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Ride ride = new Ride();
+                ride.setId(resultSet.getInt("id"));
+                ride.setStart_location(resultSet.getString("start_location"));
+                ride.setEnd_location(resultSet.getString("end_location"));
+                ride.setCustomer_username(resultSet.getString("customer_username"));
+                ride.setPrice(resultSet.getDouble("price"));
+                ride.setLengthOfRide(resultSet.getDouble("length_of_ride"));
+                ride.setVehicleType(resultSet.getString("vehicle_type"));
+                ride.setRideStatus(resultSet.getString("ride_status"));
+                ride.setRider_username(resultSet.getString("rider_username"));
+                ride.setVehiclePlateNumber(resultSet.getString("vehicle_plate_number"));
+
+                rides.add(ride);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+        }
+
+        return rides;
+    }
+
+    
+    // Method to update ride status
+    public void updateRideStatus(int rideId, String status) throws SQLException {
+        String query = "UPDATE rides SET ride_status = ? WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, status);
+            stmt.setInt(2, rideId);
+            stmt.executeUpdate();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
     }
 }
