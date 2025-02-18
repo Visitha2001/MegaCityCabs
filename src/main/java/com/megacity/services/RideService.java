@@ -11,4 +11,6 @@ public interface RideService {
     List<Ride> getAssignedRides();
     List<Ride> getRidesForUser(String username);
     List<Ride> getRidesForRiders(String username);
+    List<Ride> getAcceptedRidesForRiders(String username);
+    void updateRideStatus(int rideId, String status);
 }
