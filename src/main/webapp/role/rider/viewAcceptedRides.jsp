@@ -23,7 +23,7 @@
     <jsp:include page="header.jsp" />
     
     <div class="container_big">
-        <h1>My Rides</h1>
+        <h1>Accepted Rides</h1>
 		<h2>Rides For <%= username %></h2>
         
         <table border="1">
