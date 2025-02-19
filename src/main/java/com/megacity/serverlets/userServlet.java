@@ -27,7 +27,8 @@ public class userServlet extends HttpServlet {
                 json.append("{")
                     .append("\"username\":\"").append(rider.getUsername()).append("\",")
                     .append("\"vehicleType\":\"").append(rider.getVehicleType()).append("\",")
-                    .append("\"plateNumber\":\"").append(rider.getPlateNumber()).append("\"")
+                    .append("\"plateNumber\":\"").append(rider.getPlateNumber()).append("\",")
+                    .append("\"mobile\":\"").append(rider.getMobile()).append("\"")
                     .append("},");
             }
             if (riders.size() > 0) {

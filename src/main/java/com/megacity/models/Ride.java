@@ -14,6 +14,7 @@ public class Ride {
     private String rideStatus;
     private String vehicleType;
     private String vehiclePlateNumber;
+    private String mobile;
     private LocalDateTime rideStartedAt;
     private LocalDateTime rideEndedAt;
 
@@ -23,6 +24,7 @@ public class Ride {
     // Constructor with all fields including ID
     public Ride(int id, String start_location, String end_location, String customer_username, String rider_username,
                 double price, double lengthOfRide, String rideStatus, String vehicleType, String vehiclePlateNumber,
+                String mobile,
                 LocalDateTime rideStartedAt, LocalDateTime rideEndedAt) {
         this.id = id;
         this.start_location = start_location;
@@ -34,6 +36,7 @@ public class Ride {
         this.rideStatus = rideStatus;
         this.vehicleType = vehicleType;
         this.vehiclePlateNumber = vehiclePlateNumber;
+        this.mobile = mobile;
         this.rideStartedAt = rideStartedAt;
         this.rideEndedAt = rideEndedAt;
     }
@@ -134,5 +137,13 @@ public class Ride {
 
     public void setRideEndedAt(LocalDateTime rideEndedAt) {
         this.rideEndedAt = rideEndedAt;
+    }
+    
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 }

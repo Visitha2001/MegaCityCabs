@@ -19,9 +19,10 @@ public class AssignRideServlet extends HttpServlet {
         int rideId = Integer.parseInt(req.getParameter("rideId"));
         String riderUsername = req.getParameter("riderUsername");
         String plateNumber = req.getParameter("plateNumber");
+        String mobile = req.getParameter("mobile");
 
         // Assign the rider to the ride
-        rideService.assignRider(rideId, riderUsername, plateNumber);
+        rideService.assignRider(rideId, riderUsername, plateNumber , mobile);
 
         // Redirect back to the allRides.jsp page or send a success message
         resp.sendRedirect(req.getContextPath() + "/ride");

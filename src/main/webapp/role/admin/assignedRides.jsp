@@ -36,6 +36,7 @@
                 <th>Status</th>
                 <th>Rider Username</th>
                 <th>Vehicle Plate No.</th>
+                <th>Mobile No.</th>
             </tr>
             <%
                 if (assignedRides != null && !assignedRides.isEmpty()) {
@@ -52,6 +53,7 @@
                 <td><%= ride.getRideStatus() %></td>
                 <td><%= ride.getRider_username() %></td>
                 <td><%= ride.getVehiclePlateNumber() %></td>
+                <td><%= ride.getMobile() %></td>
             </tr>
             <%
                     }
