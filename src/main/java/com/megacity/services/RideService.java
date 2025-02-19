@@ -7,7 +7,7 @@ import java.util.List;
 public interface RideService {
     void bookRide(Ride ride);
     List<Ride> getRequestedRides();
-    void assignRider(int rideId, String riderUsername, String plateNumber);
+    void assignRider(int rideId, String riderUsername, String plateNumber, String mobile);
     List<Ride> getAssignedRides();
     List<Ride> getRidesForUser(String username);
     List<Ride> getRidesForRiders(String username);

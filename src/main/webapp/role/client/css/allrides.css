@@ -1,39 +1,135 @@
-		.container_big {
-	    	margin: 50px;
-	    }
-	    table {
-	        width: 100%;
-	        border-collapse: collapse;
-	        margin-top: 20px;
-	        background-color: #1f1f1f; /* Dark table background */
-	        color: #ffffff; /* Light text color for table */
-	    }
-	    table, th, td {
-	        border: 1px solid #333; /* Darker border color */
-	    }
-	    th, td {
-	        padding: 10px;
-	        text-align: left;
-	    }
-	    th {
-	        background-color: #333; /* Darker header background */
-	        color: #f0f0f0; /* Light text color for headers */
-	    }
-	    tr:hover {
-	        background-color: #2a2a2a; /* Slightly lighter hover effect */
-	    }
-	 	.btn-bsic {
-		    background-color: #ff5722;
-		    color: white;
-		    padding: 8px 16px;
-		    border: none;
-		    border-radius: 4px;
-		    text-decoration: none;
-		    font-size: 14px;
-		    cursor: pointer;
-		    transition: background-color 0.3s ease;
-		}
-		
-		.btn-bsic:hover {
-		    background-color: #e64a19;
-		}
+h1, h2 {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+hr {
+    border: none; /* Remove the default border */
+    height: 1px; /* Set the desired thickness */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(77,77,77); /* Apply the desired color */
+}
+
+.container_big {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.ride-card {
+    display: inline;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(45, 45, 45);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.ride-card:hover {
+    transform: translateY(-5px);
+    background-color: #252525;
+}
+
+.ride-labels {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: flex-start; /* Align items to the left */
+    margin-bottom: 10px;
+    margin-left: 25px;
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+.ride-info {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the left */
+    width: 100%;
+    border-left: 1px solid #333;
+}
+
+.ride-field, .ride-labels span {
+    flex-basis: 150px; /* Ensures both labels and fields take the same width */
+    min-width: 150px;  /* Ensure the minimum width stays consistent */
+    text-align: left;  /* Align text to the left */
+}
+
+.ride-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    padding: 0 10px;
+    position: relative;
+}
+
+.field-value {
+    color: #e0e0e0;
+    font-size: 18px;
+}
+
+.ride-action {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.ride-field:not(:last-child) {
+    border-right: 1px solid #333; /* Add vertical line between each ride-field */
+}
+
+/* For better visibility, increase contrast of the border */
+.ride-field:not(:last-child) {
+    border-right: 1px solid rgba(241, 196, 15, 0.5); /* Yellowish line */
+}
+
+.btn-bsic {
+    padding: 10px 50px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-bsic:hover {
+    background-color: #d32f2f;
+}
+
+.cancel-message {
+    color: #b0b0b0;
+    font-style: italic;
+}
+
+.no-rides {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #999;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+    .ride-card {
+        flex-direction: column;
+    }
+
+    .ride-info {
+        width: 100%;
+    }
+
+    .ride-action {
+        text-align: center;
+        margin-top: 10px;
+    }
+}

@@ -38,6 +38,7 @@
                 <th>Cus. Username</th>
                 <th>Rider Username</th>
                 <th>Vehicle Plate No.</th>
+                <th>Action</th>
             </tr>
             <%
                 if (riderAcceptRides != null && !riderAcceptRides.isEmpty()) {
@@ -54,6 +55,11 @@
                 <td><%= ride.getCustomer_username() %></td>
                 <td><%= ride.getRider_username() %></td>
                 <td><%= ride.getVehiclePlateNumber() %></td>
+                <td>
+                    <form action="${pageContext.request.contextPath}/finish" method="post" style="display:inline;">
+                        <button type="submit" class="btn-bsic">End Ride</button>
+                    </form>
+                </td>
             </tr>
             <%
                     }

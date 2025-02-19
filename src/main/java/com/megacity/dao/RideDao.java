@@ -49,6 +49,7 @@ public class RideDao {
                         rs.getString("ride_status"),
                         rs.getString("vehicle_type"),
                         rs.getString("vehicle_plate_number") != null ? rs.getString("vehicle_plate_number") : "",
+                        rs.getString("mobile") != null ? rs.getString("mobile") : "",
                         rs.getTimestamp("ride_started_at") != null ? rs.getTimestamp("ride_started_at").toLocalDateTime() : null,
                         rs.getTimestamp("ride_ended_at") != null ? rs.getTimestamp("ride_ended_at").toLocalDateTime() : null
                 );
@@ -61,13 +62,14 @@ public class RideDao {
     }
     
     // Method to assign a rider to a ride
-    public void assignRider(int rideId, String riderUsername, String plateNumber) throws SQLException {
-        String query = "UPDATE rides SET rider_username = ?, vehicle_plate_number = ?, ride_status = 'ASSIGNED' WHERE id = ?";
+    public void assignRider(int rideId, String riderUsername, String plateNumber, String mobile) throws SQLException {
+        String query = "UPDATE rides SET rider_username = ?, vehicle_plate_number = ?, mobile = ?, ride_status = 'ASSIGNED' WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, riderUsername);
             stmt.setString(2, plateNumber);
-            stmt.setInt(3, rideId);
+            stmt.setString(3, mobile);
+            stmt.setInt(4, rideId);
             stmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("MySQL JDBC Driver not found", e);
@@ -95,6 +97,7 @@ public class RideDao {
                         rs.getString("ride_status"),
                         rs.getString("vehicle_type"),
                         rs.getString("vehicle_plate_number") != null ? rs.getString("vehicle_plate_number") : "",
+                        rs.getString("mobile") != null ? rs.getString("mobile") : "",
                         rs.getTimestamp("ride_started_at") != null ? rs.getTimestamp("ride_started_at").toLocalDateTime() : null,
                         rs.getTimestamp("ride_ended_at") != null ? rs.getTimestamp("ride_ended_at").toLocalDateTime() : null
                 );
@@ -129,6 +132,8 @@ public class RideDao {
                 ride.setRideStatus(resultSet.getString("ride_status"));
                 ride.setRider_username(resultSet.getString("rider_username"));
                 ride.setVehiclePlateNumber(resultSet.getString("vehicle_plate_number"));
+                ride.setMobile(resultSet.getString("mobile"));
+                ride.setRideStartedAt(resultSet.getObject("ride_started_at", LocalDateTime.class));
 
                 rides.add(ride);
             }
@@ -172,7 +177,7 @@ public class RideDao {
         return rides;
     }
     
-    // Method to get all assigned rides for a specific rider
+    // Method to get all accepted rides for a specific rider
     public List<Ride> getAcceptedRidesForRiders(String username) throws SQLException {
         List<Ride> rides = new ArrayList<>();
         String query = "SELECT * FROM rides WHERE rider_username = ? AND ride_status = 'ACCEPTED'";
@@ -208,11 +213,13 @@ public class RideDao {
     
     // Method to update ride status
     public void updateRideStatus(int rideId, String status) throws SQLException {
-        String query = "UPDATE rides SET ride_status = ? WHERE id = ?";
+    	String query = "UPDATE rides SET ride_status = ?, ride_started_at = ? WHERE id = ?";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, status);
-            stmt.setInt(2, rideId);
+            stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            stmt.setInt(3, rideId);
+
             stmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("MySQL JDBC Driver not found", e);
