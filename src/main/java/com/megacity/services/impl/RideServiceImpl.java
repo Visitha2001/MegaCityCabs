@@ -5,6 +5,7 @@ import com.megacity.models.Ride;
 import com.megacity.services.RideService;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class RideServiceImpl implements RideService {
@@ -74,9 +75,9 @@ public class RideServiceImpl implements RideService {
     }
     
     @Override
-    public void updateRideStatus(int rideId, String status) {
+    public void updateRideStatus(int rideId, String status, LocalDateTime rideStartedAt, LocalDateTime rideEndedAt) {
         try {
-            rideDao.updateRideStatus(rideId, status);
+            rideDao.updateRideStatus(rideId, status, rideStartedAt, rideEndedAt);
         } catch (SQLException e) {
             throw new RuntimeException("Failed to update ride status", e);
         }

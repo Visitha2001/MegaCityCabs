@@ -33,6 +33,7 @@ public class RideServlet extends HttpServlet {
             ride.setVehicleType(req.getParameter("vehicleType"));
             rideService.bookRide(ride);
             resp.getWriter().write("Ride booked successfully!");
+            resp.sendRedirect(req.getContextPath() + "/user-rides");
         }
     }
 

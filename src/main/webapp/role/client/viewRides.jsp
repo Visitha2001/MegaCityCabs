@@ -22,9 +22,17 @@
     <!-- Include the header -->
     <jsp:include page="header.jsp" />
     
-    <h1>My Booked Rides</h1>
-    <h2>Rides For <%= username %></h2>
-    <hr/>
+    <div class="animated_cont">
+    	<div>
+    		<h1>My Booked Rides</h1>
+		    <div class="subhead">
+		    	<h2>Rides For <%= username %></h2>
+		    </div>
+    	</div>
+    	<div>
+    		<img alt="taxi" src="${pageContext.request.contextPath}/role/client/images/Animation - 1740048524075.gif">
+    	</div>
+    </div>
     <div class="container_big">
 
         <% if (userRides != null && !userRides.isEmpty()) { %>
@@ -90,6 +98,15 @@
 				        </span>
 				    </div>
 				<% } %>
+				
+				<% if (ride.getRideEndedAt() != null) { %>
+				    <div class="ride-field">
+				        <span>Ride End At : </span>
+				        <span class="field-value">
+				            <%= ride.getRideEndedAt().format(java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) %>
+				        </span>
+				    </div>
+				<% } %>
             </div>
             <hr/>
             <div class="ride-action">
@@ -99,7 +116,7 @@
                     <button type="submit" class="btn-bsic">Cancel</button>
                 </form>
                 <% } else { %>
-                <span class="cancel-message">Cannot cancel ride after accepted by rider</span>
+                <span class="cancel-message">Cannot cancel this ride</span>
                 <% } %>
             </div>
         </div>

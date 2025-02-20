@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/role/admin/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/role/client/css/header.css">
 <header class="site-header">
     <nav class="navbar">
         <div class="logo">
@@ -12,7 +12,6 @@
             <li><a href="">Contact</a></li>
         </ul>
         <div class="user-info">
-            <div class="user-info">
             <span class="username">
                 <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Guest" %>
             </span>
@@ -24,3 +23,60 @@
         </div>
     </nav>
 </header>
+
+<!-- Back to Top Button -->
+<button onclick="topFunction()" id="backToTopBtn" title="Back to Top">&#8593;</button>
+
+<script>
+// Get the button
+let backToTopBtn = document.getElementById("backToTopBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.opacity = "1"; // Smoothly show the button
+        backToTopBtn.style.visibility = "visible";
+    } else {
+        backToTopBtn.style.opacity = "0"; // Smoothly hide the button
+        backToTopBtn.style.visibility = "hidden";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document smoothly
+function topFunction() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scrolling
+    });
+}
+</script>
+
+<style>
+/* Back to Top Button Styles */
+#backToTopBtn {
+    display: block;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 18px;
+    background-color: #333;
+    color: white;
+    border: 1px solid #f1c40f;
+    padding: 15px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Initially hidden */
+    visibility: hidden;
+    transition: opacity 0.3s ease, background-color 0.3s ease; /* Smooth transition */
+}
+
+#backToTopBtn:hover {
+    background-color: #555; /* Darker on hover */
+}
+</style>

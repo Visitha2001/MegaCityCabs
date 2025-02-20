@@ -56,10 +56,11 @@
                 <td><%= ride.getRider_username() %></td>
                 <td><%= ride.getVehiclePlateNumber() %></td>
                 <td>
-                    <form action="${pageContext.request.contextPath}/finish" method="post" style="display:inline;">
-                        <button type="submit" class="btn-bsic">End Ride</button>
-                    </form>
-                </td>
+				    <form action="${pageContext.request.contextPath}/finish" method="post" style="display:inline;">
+				        <input type="hidden" name="rideId" value="<%= ride.getId() %>">
+				        <button type="submit" class="btn-bsic">End Ride</button>
+				    </form>
+				</td>
             </tr>
             <%
                     }

@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Book a Ride</title>
-    <link rel="stylesheet" href="css/ride.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/role/client/css/ride.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
         // Function to calculate the price based on vehicle type and length of ride
@@ -56,7 +56,7 @@
     <jsp:include page="header.jsp" />
     
     <div class="main">
-        <div class="container">
+        <div class="container1">
             <form action="${pageContext.request.contextPath}/ride" method="post" class="signup-form">
                 <input type="hidden" name="action" value="book">
                 
@@ -82,7 +82,6 @@
                 
                 <!-- Customer Username -->
                 <div class="form-group">
-                    <label for="customer_username">Customer Username</label>
                     <%
                         String customerUsername = (String) session.getAttribute("username");
                         if (customerUsername == null) {
@@ -132,6 +131,9 @@
                     <button type="submit" class="form-submit">Book Ride</button>
                 </div>
             </form>
+            <div class="ride-image">
+            	<img alt="" src="${pageContext.request.contextPath}/role/client/images/yellow-taxi-streets-new-york-city.jpg">
+            </div>
         </div>
     </div>
 </body>
