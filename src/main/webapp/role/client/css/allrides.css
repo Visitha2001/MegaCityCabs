@@ -1,6 +1,51 @@
-h1, h2 {
+.animated_cont {
+    position: relative;
+    padding: 5px;
+    background: linear-gradient(45deg, #ff8c00, #ffa500, #ffcc00, #ff8c00); /* Gradient */
+    background-size: 400% 400%;
+    animation: gradientWave 8s ease infinite; /* Infinite animation */
+    display: flex;
+    align-items: center; /* Align vertically in the center */
+    justify-content: space-between; /* Space between text and image */
+}
+
+@keyframes gradientWave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
     margin-top: 20px;
     margin-left: 50px;
+    color: black;
+}
+
+.subhead {
+    margin-left: 50px;
+    width: auto;
+    border: 1px solid #aa5500; /* Orange border */
+    border-radius: 20px; /* Rounded corners */
+    padding: 12px 20px; /* Add some padding for spacing */
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.subhead h2 {
+    margin: 0;
+    color: black;
+}
+
+.animated_cont img {
+    width: 200px; /* Make the image bigger */
+    height: auto;
+    margin-right: 50px;
 }
 
 hr {

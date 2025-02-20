@@ -134,6 +134,7 @@ public class RideDao {
                 ride.setVehiclePlateNumber(resultSet.getString("vehicle_plate_number"));
                 ride.setMobile(resultSet.getString("mobile"));
                 ride.setRideStartedAt(resultSet.getObject("ride_started_at", LocalDateTime.class));
+                ride.setRideEndedAt(resultSet.getObject("ride_ended_at", LocalDateTime.class));
 
                 rides.add(ride);
             }
@@ -212,14 +213,34 @@ public class RideDao {
 
     
     // Method to update ride status
-    public void updateRideStatus(int rideId, String status) throws SQLException {
-    	String query = "UPDATE rides SET ride_status = ?, ride_started_at = ? WHERE id = ?";
+    public void updateRideStatus(int rideId, String status, LocalDateTime rideStartedAt, LocalDateTime rideEndedAt) throws SQLException {
+        StringBuilder query = new StringBuilder("UPDATE rides SET ride_status = ?");
+        
+        // Append ride_started_at to the query if it is provided
+        if (rideStartedAt != null) {
+            query.append(", ride_started_at = ?");
+        }
+        // Append ride_ended_at to the query if it is provided
+        if (rideEndedAt != null) {
+            query.append(", ride_ended_at = ?");
+        }
+        query.append(" WHERE id = ?");
         try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, status);
-            stmt.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
-            stmt.setInt(3, rideId);
-
+             PreparedStatement stmt = conn.prepareStatement(query.toString())) {
+            int parameterIndex = 1;
+            stmt.setString(parameterIndex++, status);
+            
+            // Set ride_started_at if provided
+            if (rideStartedAt != null) {
+                stmt.setTimestamp(parameterIndex++, Timestamp.valueOf(rideStartedAt));
+            }
+            // Set ride_ended_at if provided
+            if (rideEndedAt != null) {
+                stmt.setTimestamp(parameterIndex++, Timestamp.valueOf(rideEndedAt));
+            }
+            // Set rideId
+            stmt.setInt(parameterIndex, rideId);
+            
             stmt.executeUpdate();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("MySQL JDBC Driver not found", e);

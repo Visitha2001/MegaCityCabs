@@ -1,12 +1,13 @@
-.container {
+.container1 {
     background: #1e1e1e;
     border-radius: 12px;
     overflow: hidden;
-    max-width: 800px;
-    width: 100%;
+    width: 80%;
     display: flex;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+	align-items: stretch;
+    justify-content: space-between;
 }
 
 .signup-form {
@@ -16,6 +17,21 @@
     flex-direction: column;
     justify-content: center;
     background-color: #333;
+}
+
+.ride-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Stretch image to match height */
+    overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+.ride-image img {
+    width: 100%; /* Ensure image fills the container width */
+    height: 100%; /* Ensure image matches the form height */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    border-radius: 0 12px 12px 0; /* Rounded corners on the right side */
 }
 
 .form-title {
@@ -64,6 +80,7 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 10px;
+    height: 60px;
 }
 
 .card {
@@ -71,7 +88,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 165px;
+    width: 159px;
     height: 80px;
     border: 2px solid #555;
     border-radius: 8px;

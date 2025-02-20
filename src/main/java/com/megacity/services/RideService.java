@@ -2,6 +2,7 @@ package com.megacity.services;
 
 import com.megacity.models.Ride;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface RideService {
@@ -12,5 +13,5 @@ public interface RideService {
     List<Ride> getRidesForUser(String username);
     List<Ride> getRidesForRiders(String username);
     List<Ride> getAcceptedRidesForRiders(String username);
-    void updateRideStatus(int rideId, String status);
+    void updateRideStatus(int rideId, String status, LocalDateTime rideStartedAt, LocalDateTime rideEndedAt);
 }
