@@ -37,5 +37,52 @@
 		      <button data-index="2"></button>
 	    </div>
   	</div>
+  	
+  	<section class="why-us-section">
+	    <div class="why-us-content">
+	      <h2>Why Choose Us?</h2>
+	      <p>We provide the best cab services tailored to your needs. Here's why you should choose us:</p>
+	      <ul>
+	        <li>Safe and reliable rides with verified drivers</li>
+	        <li>24/7 customer support for all your queries</li>
+	        <li>Affordable pricing with no hidden charges</li>
+	        <li>Modern vehicles equipped with top-notch amenities</li>
+	      </ul>
+	    </div>
+	    <div class="why-us-image">
+	      <img src="${pageContext.request.contextPath}/role/client/images/portrait-young-confused-blonde-woman-standing-busy-street-with-cars-her-looking.jpg" alt="Cab Service Image">
+	   	</div>
+  	</section>
+  	<hr class="line2"/>
+  	  	
+  	<section class="services-section">
+	    <h2>Our Services</h2>
+	    <div class="services-container">
+	      <div class="service-card">
+	        <i class="fas fa-car"></i>
+	        <h3>City Rides</h3>
+  			<hr class="line"/>
+	        <p>Enjoy seamless rides within the city at affordable prices.</p>
+	      </div>
+	      <div class="service-card">
+	        <i class="fas fa-road"></i>
+	        <h3>Inter-City Travel</h3>
+  			<hr class="line"/>
+	        <p>Travel comfortably between cities with our premium cabs.</p>
+	      </div>
+	      <div class="service-card">
+	        <i class="fas fa-clock"></i>
+	        <h3>24/7 Availability</h3>
+  			<hr class="line"/>
+	        <p>Book a cab anytime, anywhere, day or night.</p>
+	      </div>
+	      <div class="service-card">
+	        <i class="fas fa-shield-alt"></i>
+	        <h3>Safety First</h3>
+  			<hr class="line"/>
+	        <p>Your safety is our priority with verified drivers and secure rides.</p>
+	      </div>
+	    </div>
+  	</section>
 </body>
 </html>
