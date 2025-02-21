@@ -65,6 +65,44 @@ hr {
     margin: 0 auto;
 }
 
+/* Style for the filter dropdown container */
+.filter-dropdown {
+    margin-bottom: 20px; /* Add some space below the dropdown */
+    text-align: left; /* Align the dropdown to the right */
+    padding: 12px 10px; /* Add some padding */
+}
+
+/* Style for the filter dropdown label */
+.filter-dropdown label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px; /* Add space between the label and the dropdown */
+    color: #ffdf00; /* Dark text color */
+}
+
+/* Style for the filter dropdown itself */
+.filter-dropdown select {
+    padding: 8px 12px; /* Add padding for better appearance */
+    font-size: 14px;
+    border: 1px solid #ffdf80; /* Light gray border */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #4b4b4b; /* White background */
+    color: #ffff80; /* Dark text color */
+    cursor: pointer; /* Change cursor to pointer */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Style for the dropdown when hovered */
+.filter-dropdown select:hover {
+    border-color: #ff8080; /* Darker border on hover */
+}
+
+/* Style for the dropdown when focused */
+.filter-dropdown select:focus {
+    border-color: #ff8080; /* Blue border when focused */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle glow effect */
+}
+
 .ride-card {
     display: inline;
     align-items: center;
