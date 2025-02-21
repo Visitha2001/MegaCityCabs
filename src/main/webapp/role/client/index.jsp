@@ -20,7 +20,7 @@
     <jsp:include page="header.jsp" />
 
     <main>
-    	GG
+    	
     </main>
 </body>
 </html>
