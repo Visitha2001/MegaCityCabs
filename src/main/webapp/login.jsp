@@ -14,9 +14,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
 	<div class="main">
-
 		<!-- Sing in  Form -->
 		<section class="sign-in">
 			<div class="container">

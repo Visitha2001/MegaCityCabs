@@ -13,12 +13,13 @@
         </ul>
         <div class="user-info">
             <span class="username">
-                <%= session.getAttribute("username") != null ? session.getAttribute("username") : "Guest" %>
+                &#128100; <%= session.getAttribute("username") != null ? session.getAttribute("username") : "" %>
             </span>
             <% if (session.getAttribute("username") != null) { %>
                 <a class="logout-btn" href="${pageContext.request.contextPath}/logout.jsp">Logout</a>
             <% } else { %>
                 <a class="login-btn" href="${pageContext.request.contextPath}/login.jsp">Login</a>
+                <a class="reg-btn" href="${pageContext.request.contextPath}/registration.jsp">Register</a>
             <% } %>
         </div>
     </nav>
