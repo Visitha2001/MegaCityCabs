@@ -20,7 +20,7 @@
     <jsp:include page="header.jsp" />
 
     <main>
-        <h1>Welcome to the <%= session.getAttribute("role") != null ? session.getAttribute("role") : "Guest" %> Home Page!</h1>
+    	GG
     </main>
 </body>
 </html>

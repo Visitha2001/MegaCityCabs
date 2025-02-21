@@ -35,6 +35,18 @@
     </div>
     <div class="container_big">
 
+        <!-- Dropdown for filtering rides by status -->
+        <div class="filter-dropdown">
+            <label for="statusFilter">Filter by Status:</label>
+            <select id="statusFilter" onchange="filterRides()">
+                <option value="REQUESTED">Requested Rides</option>
+                <option value="ASSIGNED">Assigned Rides</option>
+                <option value="ACCEPTED">Accepted Rides</option>
+                <option value="CANCELLED">Canceled Rides</option>
+                <option value="COMPLETED">Completed Rides</option>
+            </select>
+        </div>
+
         <% if (userRides != null && !userRides.isEmpty()) { %>
         <!-- Displaying labels at the top of the container -->
         <div class="ride-labels">
@@ -51,7 +63,7 @@
         </div>
 
         <% for (Ride ride : userRides) { %>
-        <div class="ride-card">
+        <div class="ride-card" data-status="<%= ride.getRideStatus() %>">
             <div class="ride-info">
                 <div class="ride-field">
                     <span class="field-value"><%= ride.getId() %></span>
@@ -127,5 +139,25 @@
         </div>
         <% } %>
     </div>
+
+    <script>
+        function filterRides() {
+            const selectedStatus = document.getElementById("statusFilter").value;
+            const rideCards = document.querySelectorAll(".ride-card");
+
+            rideCards.forEach(card => {
+                const rideStatus = card.getAttribute("data-status");
+                if (selectedStatus === "ALL" || rideStatus === selectedStatus) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Set the default filter to "REQUESTED"
+        document.getElementById("statusFilter").value = "REQUESTED";
+        filterRides(); // Apply the filter on page load
+    </script>
 </body>
 </html>
