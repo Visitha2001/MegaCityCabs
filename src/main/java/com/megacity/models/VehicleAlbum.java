@@ -6,7 +6,14 @@ public class VehicleAlbum {
     private String image;
     private String description;
 
-    // Getters and Setters
+    public VehicleAlbum(String name, String type, String image, String description) {
+    	this.name = name;
+    	this.type = type;
+    	this.image = image;
+    	this.description = description;
+	}
+
+	// Getters and Setters
     public String getName() {
         return name;
     }
