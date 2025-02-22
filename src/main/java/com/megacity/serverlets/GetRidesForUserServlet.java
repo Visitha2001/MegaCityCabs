@@ -22,7 +22,7 @@ public class GetRidesForUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("username") == null) {
-            response.sendRedirect("../../login.jsp");
+        	response.sendRedirect(request.getContextPath() + "/login.jsp");
             return;
         }
 
