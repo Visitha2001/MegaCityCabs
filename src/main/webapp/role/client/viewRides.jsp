@@ -10,10 +10,11 @@
 </head>
 <body>
     <%
-        if (session == null || session.getAttribute("username") == null) {
-            response.sendRedirect("${pageContext.request.contextPath}/login.jsp");
-            return;
-        }
+	    if (session == null || session.getAttribute("username") == null || !"customer".equals(session.getAttribute("role"))) {
+	        response.sendRedirect(request.getContextPath() + "/login.jsp");
+	        return;
+	    }
+    
         String username = (String) session.getAttribute("username");
 
         // Retrieve the list of rides for the user from the request attributes
