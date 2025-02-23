@@ -148,9 +148,22 @@ public class UserDao {
                 customers.add(customer);
             }
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();  // Consider logging this exception instead of printing it
+            e.printStackTrace();
         }
         
         return customers;
+    }
+    
+    public boolean deleteRider(String username) {
+        String query = "DELETE FROM users WHERE username = ?";
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, username);
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

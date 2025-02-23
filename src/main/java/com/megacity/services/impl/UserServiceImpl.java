@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
     public List<User> getAllCustomers() {
     	return userDao.getAllCustomers();
     }
+    
+    @Override
+    public boolean deleteRider(String username) {
+        return userDao.deleteRider(username);
+    }
 }
