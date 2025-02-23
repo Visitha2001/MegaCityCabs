@@ -30,4 +30,14 @@ public class UserServiceImpl implements UserService {
     public List<User> getRidersByVehicleType(String vehicleType) {
         return userDao.getRidersByVehicleType(vehicleType);
     }
+    
+    @Override
+    public List<User> getAllRiders() {
+    	return userDao.getAllRiders();
+    }
+    
+    @Override
+    public List<User> getAllCustomers() {
+    	return userDao.getAllCustomers();
+    }
 }

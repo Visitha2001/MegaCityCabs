@@ -8,4 +8,6 @@ public interface UserService {
     boolean registerUser(User user);
     User authenticateUser(String usernameOrEmail, String password);
     List<User> getRidersByVehicleType(String vehicleType);
+    List<User> getAllRiders();
+    List<User> getAllCustomers();
 }

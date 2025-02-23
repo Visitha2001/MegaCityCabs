@@ -93,4 +93,64 @@ public class UserDao {
         }
         return riders;
     }
+    
+    // get all riders
+    public List<User> getAllRiders() {
+        String query = "SELECT * FROM users WHERE role = 'rider'";
+        List<User> riders = new ArrayList<>();
+        try (Connection connection = DBConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                User rider = new User(
+                    resultSet.getString("username"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password"),
+                    resultSet.getString("mobile"),
+                    resultSet.getString("NIC"),
+                    resultSet.getString("address"),
+                    resultSet.getString("role"),
+                    resultSet.getString("vehicleType"),
+                    resultSet.getString("plateNumber")
+                );
+                riders.add(rider);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return riders;
+    }
+    
+    // get all customers
+    public List<User> getAllCustomers() {
+        String query = "SELECT * FROM users WHERE role = 'customer'";
+        List<User> customers = new ArrayList<>();
+        
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            
+            // Execute the query
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            // Loop through the result set and create User objects
+            while (resultSet.next()) {
+                User customer = new User(
+                    resultSet.getString("username"),
+                    resultSet.getString("email"),
+                    resultSet.getString("password"),
+                    resultSet.getString("mobile"),
+                    resultSet.getString("NIC"),
+                    resultSet.getString("address"),
+                    resultSet.getString("role"),
+                    resultSet.getString("vehicleType"),
+                    resultSet.getString("plateNumber")
+                );
+                customers.add(customer);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();  // Consider logging this exception instead of printing it
+        }
+        
+        return customers;
+    }
 }
