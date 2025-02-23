@@ -33,6 +33,7 @@
                 <th>Address</th>
                 <th>Vehicle Type</th>
                 <th>Plate Number</th>
+                <th>Actions</th>  <!-- New column for actions -->
             </tr>
             <%
                 if (riders != null && !riders.isEmpty()) {
@@ -46,13 +47,20 @@
                 <td><%= rider.getAddress() %></td>
                 <td><%= rider.getVehicleType() %></td>
                 <td><%= rider.getPlateNumber() %></td>
+                <td>
+                    <!-- Delete button -->
+                    <form action="deleteRider" method="post" style="display:inline;">
+                        <input type="hidden" name="username" value="<%= rider.getUsername() %>">
+                        <input type="submit" value="Delete" class="btn-bsic" onclick="return confirm('Are you sure you want to delete this rider?');">
+                    </form>
+                </td>
             </tr>
             <%
                     }
                 } else {
             %>
             <tr>
-                <td colspan="7">No riders available.</td>
+                <td colspan="8">No riders available.</td>
             </tr>
             <%
                 }

@@ -10,4 +10,5 @@ public interface UserService {
     List<User> getRidersByVehicleType(String vehicleType);
     List<User> getAllRiders();
     List<User> getAllCustomers();
+    boolean deleteRider(String username);
 }
