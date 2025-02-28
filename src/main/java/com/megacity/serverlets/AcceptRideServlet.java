@@ -27,6 +27,9 @@ public class AcceptRideServlet extends HttpServlet {
             // Update the ride status to "REJECTED"
             rideService.updateRideStatus(rideId, "CANCELLED", null, null);
         }
+        
+        // Add success message to session
+        request.getSession().setAttribute("successMessage", "Rlde Accepted successful!");
 
         // Redirect back to the rides page
         response.sendRedirect(request.getContextPath() + "/accepted");

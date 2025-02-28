@@ -23,6 +23,9 @@ public class AssignRideServlet extends HttpServlet {
 
         // Assign the rider to the ride
         rideService.assignRider(rideId, riderUsername, plateNumber , mobile);
+        
+        // Add success message to session
+        req.getSession().setAttribute("successMessage", "Rlder assigned successful!");
 
         // Redirect back to the allRides.jsp page or send a success message
         resp.sendRedirect(req.getContextPath() + "/ride");

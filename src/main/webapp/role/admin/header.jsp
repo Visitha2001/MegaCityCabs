@@ -1,5 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/role/admin/css/header.css">
+	<!-- Display success message if it exists -->
+	<% 
+	    String successMessage = (String) session.getAttribute("successMessage");
+	    if (successMessage != null) {
+	%>
+	    <div style="
+	        padding: 15px;
+	        border-radius: 5px;
+	        background-color: #d4edda;
+	        border: 1px solid #c3e6cb;
+	        color: #155724;
+	        font-size: 16px;
+	        font-family: Arial, sans-serif;
+	        text-align: center;
+	    ">
+	        <%= successMessage %>
+	    </div>
+	<%
+	        // Remove the message from the session after displaying it
+	        session.removeAttribute("successMessage");
+	    }
+	%>
 <header class="site-header">
     <nav class="navbar">
         <div class="logo">

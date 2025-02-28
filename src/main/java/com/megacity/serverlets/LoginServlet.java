@@ -27,7 +27,8 @@ public class LoginServlet extends HttpServlet {
 
         // Input validation
         if (usernameOrEmail == null || usernameOrEmail.isEmpty() || password == null || password.isEmpty()) {
-            out.println("<h3 style='color:red'>All fields are required!</h3>");
+        	request.getSession().setAttribute("errorMessage", "All fields are required!");
+        	response.sendRedirect("login.jsp");
             return;
         }
 
@@ -50,7 +51,8 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("role/client/index.jsp");
             }
         } else {
-            out.println("<h3 style='color:red'>Invalid username/email or password!</h3>");
+        	request.getSession().setAttribute("errorMessage", "Invalid username/email or password!");
+        	response.sendRedirect("login.jsp");
         }
     }
 }
