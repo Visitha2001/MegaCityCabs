@@ -31,7 +31,7 @@ public class AcceptedRides extends HttpServlet {
 
         List<Ride> riderAcceptRides = rideService.getAcceptedRidesForRiders(username);
         request.setAttribute("riderAcceptRides", riderAcceptRides);
-
+        
         request.getRequestDispatcher("/role/rider/viewAcceptedRides.jsp").forward(request, response);
     }
 }

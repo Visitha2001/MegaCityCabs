@@ -22,6 +22,8 @@ public class DeleteRiderServlet extends HttpServlet {
         boolean isDeleted = userService.deleteRider(username);
 
         if (isDeleted) {
+            // Add success message to session
+            request.getSession().setAttribute("successMessage", "Rlder Removed successful!");
             response.sendRedirect("riders");
         } else {
             request.setAttribute("error", "Failed to delete rider.");

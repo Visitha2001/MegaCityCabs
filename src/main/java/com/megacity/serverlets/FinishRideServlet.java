@@ -21,6 +21,9 @@ public class FinishRideServlet extends HttpServlet {
 
         // Update the ride status to "COMPLETED" and set the end time
         rideService.updateRideStatus(rideId, "COMPLETED", null, LocalDateTime.now());
+        
+        // Add success message to session
+        request.getSession().setAttribute("successMessage", "Rlde Ended successful!");
 
         // Redirect back to the rides page
         response.sendRedirect(request.getContextPath() + "/rider-rides");

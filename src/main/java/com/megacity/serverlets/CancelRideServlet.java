@@ -22,6 +22,10 @@ public class CancelRideServlet extends HttpServlet {
         // Update the ride status to "CANCELLED" and pass null for start and end times
         rideService.updateRideStatus(rideId, "CANCELLED", null, null);
 
+
+        // Add success message to session
+        request.getSession().setAttribute("successMessage", "Rlde cancelled successful!");
+        
         // Redirect back to the rides page
         response.sendRedirect(request.getContextPath() + "/user-rides");
     }
