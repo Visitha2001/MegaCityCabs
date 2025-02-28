@@ -9,7 +9,6 @@
             <li><a href="${pageContext.request.contextPath}/role/admin/admin-index.jsp">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/ride">Assign Ride</a></li>
             <li><a href="${pageContext.request.contextPath}/assigned">Assigned Rides</a></li>
-            <li><a href="${pageContext.request.contextPath}/role/admin/addVehicle.jsp">Add Vehicle</a></li>
             <li><a href="${pageContext.request.contextPath}/riders">All Rides</a></li>
             <li><a href="${pageContext.request.contextPath}/customers">All Customers</a></li>
         </ul>
