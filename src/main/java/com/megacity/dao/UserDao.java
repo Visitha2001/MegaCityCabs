@@ -8,6 +8,9 @@ import com.megacity.models.User;
 import com.megacity.utils.DBConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserDao {
 
@@ -165,5 +168,62 @@ public class UserDao {
             e.printStackTrace();
             return false;
         }
+    }
+    
+//    -------------------------------------------
+    
+ // Method to get counts of riders by vehicle type
+    public Map<String, Integer> getRiderCountsByVehicleType() throws SQLException {
+        String query = "SELECT vehicleType, COUNT(*) as count FROM users WHERE role = 'rider' GROUP BY vehicleType";
+        Map<String, Integer> vehicleTypeCounts = new HashMap<>();
+        
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            
+            while (resultSet.next()) {
+                String vehicleType = resultSet.getString("vehicleType");
+                int count = resultSet.getInt("count");
+                vehicleTypeCounts.put(vehicleType, count);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+        }
+        
+        return vehicleTypeCounts;
+    }
+
+    // Method to get total number of riders
+    public int getTotalRidersCount() throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM users WHERE role = 'rider'";
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            
+            if (resultSet.next()) {
+                return resultSet.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+        }
+        
+        return 0;
+    }
+
+    // Method to get total number of customers
+    public int getTotalCustomersCount() throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM users WHERE role = 'customer'";
+        try (Connection connection = DBConnection.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            
+            if (resultSet.next()) {
+                return resultSet.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+        }
+        
+        return 0;
     }
 }

@@ -25,10 +25,10 @@
 <header class="site-header">
     <nav class="navbar">
         <div class="logo">
-            <a href="${pageContext.request.contextPath}/role/admin/admin-index.jsp">MegaCity</a>
+            <a href="${pageContext.request.contextPath}/admin/dashboard">MegaCity</a>
         </div>
         <ul class="nav-links">
-            <li><a href="${pageContext.request.contextPath}/role/admin/admin-index.jsp">Home</a></li>
+            <li><a href="${pageContext.request.contextPath}/admin/dashboard">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/ride">Assign Ride</a></li>
             <li><a href="${pageContext.request.contextPath}/assigned">Assigned Rides</a></li>
             <li><a href="${pageContext.request.contextPath}/riders">All Rides</a></li>
