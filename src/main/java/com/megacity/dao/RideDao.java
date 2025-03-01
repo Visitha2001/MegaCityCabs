@@ -7,6 +7,8 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RideDao {
 
@@ -245,5 +247,117 @@ public class RideDao {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("MySQL JDBC Driver not found", e);
         }
+    }
+    
+//    -----------------------------------------------
+    
+    // Method to get total number of rides
+    public int getTotalRidesCount() throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                int total = rs.getInt("total");
+                System.out.println("Total Rides: " + total); // Debugging
+                return total;
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
+    }
+
+    // Method to get total income from all completed rides
+    public double getTotalIncome() throws SQLException {
+        String query = "SELECT SUM(price) AS total_income FROM rides WHERE ride_status = 'COMPLETED'";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getDouble("total_income");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0.0;
+    }
+
+    // Method to get total number of completed rides
+    public int getCompletedRidesCount() throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides WHERE ride_status = 'COMPLETED'";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
+    }
+
+    // Method to get total number of requested rides
+    public int getRequestedRidesCount() throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides WHERE ride_status = 'REQUESTED'";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
+    }
+
+    // Method to get total number of assigned rides
+    public int getAssignedRidesCount() throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides WHERE ride_status = 'ASSIGNED'";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
+    }
+
+    // Method to get recent rides for dashboard
+    public List<Ride> getRecentRides(int limit) throws SQLException {
+        String query = "SELECT * FROM rides ORDER BY id DESC LIMIT ?";
+        List<Ride> recentRides = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, limit);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Ride ride = new Ride(
+                    rs.getInt("id"),
+                    rs.getString("start_location"),
+                    rs.getString("end_location"),
+                    rs.getString("customer_username"),
+                    rs.getString("rider_username") != null ? rs.getString("rider_username") : "",
+                    rs.getDouble("price"),
+                    rs.getDouble("length_of_ride"),
+                    rs.getString("ride_status"),
+                    rs.getString("vehicle_type"),
+                    rs.getString("vehicle_plate_number") != null ? rs.getString("vehicle_plate_number") : "",
+                    rs.getString("mobile") != null ? rs.getString("mobile") : "",
+                    rs.getTimestamp("ride_started_at") != null ? rs.getTimestamp("ride_started_at").toLocalDateTime() : null,
+                    rs.getTimestamp("ride_ended_at") != null ? rs.getTimestamp("ride_ended_at").toLocalDateTime() : null
+                );
+                recentRides.add(ride);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return recentRides;
     }
 }
