@@ -360,4 +360,40 @@ public class RideDao {
         }
         return recentRides;
     }
+    
+    // method to get completed rides by specific rider
+    public List<Ride> getCompletedRidesByRider(String username) throws SQLException {
+        List<Ride> completedRides = new ArrayList<>();
+        String query = "SELECT * FROM rides WHERE rider_username = ? AND ride_status = 'COMPLETED'";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, username); // Set the username parameter
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Ride ride = new Ride(
+                    resultSet.getInt("id"),
+                    resultSet.getString("start_location"),
+                    resultSet.getString("end_location"),
+                    resultSet.getString("customer_username"),
+                    resultSet.getString("rider_username") != null ? resultSet.getString("rider_username") : "",
+                    resultSet.getDouble("price"),
+                    resultSet.getDouble("length_of_ride"),
+                    resultSet.getString("ride_status"),
+                    resultSet.getString("vehicle_type"),
+                    resultSet.getString("vehicle_plate_number") != null ? resultSet.getString("vehicle_plate_number") : "",
+                    resultSet.getString("mobile") != null ? resultSet.getString("mobile") : "",
+                    resultSet.getTimestamp("ride_started_at") != null ? resultSet.getTimestamp("ride_started_at").toLocalDateTime() : null,
+                    resultSet.getTimestamp("ride_ended_at") != null ? resultSet.getTimestamp("ride_ended_at").toLocalDateTime() : null
+                );
+                completedRides.add(ride);
+            }
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+        }
+
+        return completedRides;
+    }
 }

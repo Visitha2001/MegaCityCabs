@@ -31,6 +31,7 @@
             <li><a href="${pageContext.request.contextPath}/role/rider/rider-index.jsp">Home</a></li>
             <li><a href="${pageContext.request.contextPath}/rider-rides">Accept Rides</a></li>
             <li><a href="${pageContext.request.contextPath}/accepted">Accepted Rides</a></li>
+            <li><a href="${pageContext.request.contextPath}/completed-rides-rider">Completed Rides</a></li>
             <li><a href="">Contact</a></li>
         </ul>
         <div class="user-info">
