@@ -82,4 +82,13 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to update ride status", e);
         }
     }
+    
+    @Override
+    public List<Ride> getCompletedRidesByRider(String username) {
+        try {
+            return rideDao.getCompletedRidesByRider(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch completed rides for rider", e);
+        }
+    }
 }
