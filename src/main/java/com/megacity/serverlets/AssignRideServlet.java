@@ -20,6 +20,12 @@ public class AssignRideServlet extends HttpServlet {
         String riderUsername = req.getParameter("riderUsername");
         String plateNumber = req.getParameter("plateNumber");
         String mobile = req.getParameter("mobile");
+        
+//        // Log the received parameters
+//        System.out.println("Ride ID: " + rideId);
+//        System.out.println("Rider Username: " + riderUsername);
+//        System.out.println("Plate Number: " + plateNumber);
+//        System.out.println("Mobile: " + mobile);
 
         // Assign the rider to the ride
         rideService.assignRider(rideId, riderUsername, plateNumber , mobile);

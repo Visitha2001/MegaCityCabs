@@ -95,7 +95,7 @@
 								</div>
                                 <div class="form-group">
                                     <label for="plateNumber"><i class="zmdi zmdi-card"></i></label>
-                                    <input type="text" name="plateNumber" id="plateNumber" placeholder="plate Number" />
+                                    <input type="text" name="plateNumber" id="plateNumber" placeholder="plate Number (V12345)" />
                                 </div>
                             </div>
 
