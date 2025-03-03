@@ -91,4 +91,40 @@ public class RideServiceImpl implements RideService {
             throw new RuntimeException("Failed to fetch completed rides for rider", e);
         }
     }
+    
+    @Override
+    public int getTotalCompletedRidesByRider(String username) {
+        try {
+            return rideDao.getTotalCompletedRidesByRider(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch total completed rides by rider", e);
+        }
+    }
+
+    @Override
+    public double getTotalIncomeByRider(String username) {
+        try {
+            return rideDao.getTotalIncomeByRider(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch total income by rider", e);
+        }
+    }
+
+    @Override
+    public int getTotalAssignedRidesByRider(String username) {
+        try {
+            return rideDao.getTotalAssignedRidesByRider(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch total assigned rides by rider", e);
+        }
+    }
+
+    @Override
+    public int getTotalAcceptedRidesByRider(String username) {
+        try {
+            return rideDao.getTotalAcceptedRidesByRider(username);
+        } catch (SQLException e) {
+            throw new RuntimeException("Failed to fetch total accepted rides by rider", e);
+        }
+    }
 }

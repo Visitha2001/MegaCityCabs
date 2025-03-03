@@ -15,4 +15,8 @@ public interface RideService {
     List<Ride> getAcceptedRidesForRiders(String username);
     void updateRideStatus(int rideId, String status, LocalDateTime rideStartedAt, LocalDateTime rideEndedAt);
     List<Ride> getCompletedRidesByRider(String username);
+    int getTotalCompletedRidesByRider(String username);
+    double getTotalIncomeByRider(String username);
+    int getTotalAssignedRidesByRider(String username);
+    int getTotalAcceptedRidesByRider(String username);
 }

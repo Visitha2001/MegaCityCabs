@@ -249,7 +249,7 @@ public class RideDao {
         }
     }
     
-//    -----------------------------------------------
+//    ----------------------ADMIN-------------------------
     
     // Method to get total number of rides
     public int getTotalRidesCount() throws SQLException {
@@ -395,5 +395,70 @@ public class RideDao {
         }
 
         return completedRides;
+    }
+    
+    // --------------------------RIDER-----------------------
+ // Method to get total rides completed by a specific rider
+    public int getTotalCompletedRidesByRider(String username) throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides WHERE rider_username = ? AND ride_status = 'COMPLETED'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
+    }
+
+    // Method to get total income earned by a specific rider
+    public double getTotalIncomeByRider(String username) throws SQLException {
+        String query = "SELECT SUM(price) AS total_income FROM rides WHERE rider_username = ? AND ride_status = 'COMPLETED'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getDouble("total_income");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0.0;
+    }
+
+    // Method to get total rides assigned to a specific rider
+    public int getTotalAssignedRidesByRider(String username) throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides WHERE rider_username = ? AND ride_status = 'ASSIGNED'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
+    }
+
+    // Method to get total rides accepted by a specific rider
+    public int getTotalAcceptedRidesByRider(String username) throws SQLException {
+        String query = "SELECT COUNT(*) AS total FROM rides WHERE rider_username = ? AND ride_status = 'ACCEPTED'";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("MySQL JDBC Driver not found", e);
+        }
+        return 0;
     }
 }
