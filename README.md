@@ -101,7 +101,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 For any questions or feedback, please contact:
-- **Visitha** [Visitha](visitha2001@gmail.com)
+- **Visitha** -- visitha2001@gmail.com
 - **GitHub:** [Visitha2001](https://github.com/Visitha2001)  
 
 ---
