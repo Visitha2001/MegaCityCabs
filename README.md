@@ -80,7 +80,7 @@ MegaCityCabs/
 │       ├── logout.jsp           # Logout page
 │       └── registration.jsp     # Registration page
 └── DataBase/                    # Database scripts
-    └── MegaCityCab_DB.sql       # SQL schema file
+    └── MegaCityCab_DB.sql       # SQL schema file(this is only available in main branch)
 ```
 
 ## Running Tests
